@@ -93,10 +93,10 @@ public class buttonEffect {
         miniBtn.setOnAction(event -> {
             minimizeEffect();
         });
-//
-//        sizeBtn.setOnAction(event -> {
-//            sizeEffect();
-//        });
+
+        sizeBtn.setOnAction(event -> {
+            sizeEffect();
+        });
     }
 
     private void exitDelayTime(){
@@ -198,47 +198,15 @@ public class buttonEffect {
         animation.setInterpolator(Interpolator.EASE_OUT);
 
         animation.setOnFinished(e -> {
+            parent.setOpacity(1);
+            parent.setScaleX(1);
+            parent.setScaleY(1);
             stage.setIconified(true);
 
         });
         animation.play();
 
 
-
-        parent.setVisible(true);
-        parent.setOpacity(0);
-        parent.setScaleX(0.90);
-        parent.setScaleY(0.90);
-        parent.setTranslateY(12);
-
-        FadeTransition fadeIn = new FadeTransition(duration, parent);
-        fadeIn.setToValue(1.0);
-
-        ScaleTransition scaleIn = new ScaleTransition(duration, parent);
-        scaleIn.setToX(1.0);
-        scaleIn.setToY(1.0);
-
-        TranslateTransition moveUp = new TranslateTransition(duration, parent);
-        moveUp.setToY(0);
-
-        Timeline shadowBack = new Timeline(
-                new KeyFrame(
-                        duration,
-                        new KeyValue(
-                                shadow.colorProperty(),
-                                Color.rgb(0, 0, 0, 0.35),
-                                Interpolator.EASE_IN
-                        )
-                )
-        );
-
-
-        ParallelTransition restore = new ParallelTransition(
-                fadeIn, scaleIn, moveUp, shadowBack
-        );
-
-        restore.setInterpolator(Interpolator.EASE_IN);
-        restore.play();
 
 
 
